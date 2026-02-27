@@ -1,0 +1,177 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* 3D ビューア領域 */
+#viewer-container {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#viewer-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+}
+
+#viewer-container canvas:active {
+  cursor: grabbing;
+}
+
+/* ウェルカム画面 */
+#welcome {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #fff;
+  z-index: 10;
+}
+
+.welcome-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.welcome-content h1 {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.welcome-content p {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: #a0b4cc;
+  margin-bottom: 1.5rem;
+}
+
+.welcome-content .hint {
+  font-size: 0.85rem;
+  color: #607080;
+  margin-top: 1rem;
+}
+
+#welcome-open-btn {
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: #e94560;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#welcome-open-btn:hover {
+  background: #c73652;
+  transform: translateY(-1px);
+}
+
+#welcome-open-btn:active {
+  transform: translateY(0);
+}
+
+#welcome.drag-over::after {
+  content: 'ここにドロップ';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: rgba(233, 69, 96, 0.3);
+  border: 4px dashed #e94560;
+  pointer-events: none;
+}
+
+/* オーバーレイUI */
+#overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 20;
+}
+
+#overlay button {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#overlay button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* ドロップオーバーレイ */
+#drop-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(233, 69, 96, 0.25);
+  border: 4px dashed #e94560;
+  z-index: 30;
+  pointer-events: none;
+}
+
+#drop-overlay p {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+/* ヒントバー */
+#hint-bar {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+  z-index: 20;
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}

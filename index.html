@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; worker-src blob:;" />
+    <title>Web Panorama Viewer</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="viewer-container"></div>
+
+      <!-- ウェルカム画面（ファイル未選択時） -->
+      <div id="welcome">
+        <div class="welcome-content">
+          <h1>🌅 Web Panorama Viewer</h1>
+          <p>スマートフォンで撮影したパノラマ写真を表示します</p>
+          <button id="welcome-open-btn">📂 ファイルを選択</button>
+          <p class="hint">またはここにファイルをドラッグ＆ドロップ</p>
+        </div>
+      </div>
+
+      <!-- オーバーレイUI（表示中） -->
+      <div id="overlay" class="hidden">
+        <button id="open-btn" title="ファイルを開く">📂</button>
+        <button id="reset-btn" title="視点をリセット">⟳</button>
+        <button id="fullscreen-btn" title="全画面表示">⛶</button>
+      </div>
+
+      <!-- ドロップオーバーレイ -->
+      <div id="drop-overlay" class="hidden">
+        <p>ここにドロップ</p>
+      </div>
+
+      <!-- ファイル入力（非表示） -->
+      <input type="file" id="file-input" accept="image/*" style="display:none" />
+
+      <!-- キーボード操作のヒント -->
+      <div id="hint-bar" class="hidden">
+        <span>ドラッグ: 視点移動</span>
+        <span>ホイール / ピンチ: ズーム</span>
+        <span>矢印キー: 視点移動</span>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
